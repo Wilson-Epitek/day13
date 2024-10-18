@@ -1,0 +1,33 @@
+function handleSubmit(abc) {
+    abc.preventDefault(); 
+  
+    let firstName = document.getElementById("firstname").value;
+    let lastName = document.getElementById("lastname").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let errorMessage = ""; 
+
+    if (firstName === "") {
+      errorMessage = "First name must not be empty";
+    }
+
+    if (lastName === "") {
+      errorMessage = "Last name must not be empty";
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+      errorMessage = "Email is badly formatted";
+    }
+  
+    if (password.length < 8 || /^[a-zA-Z]+$/.test(password) || /^[0-9]+$/.test(password)) {
+      errorMessage = "Password must be at least 8 characters long and contain at least a letter and a number";
+    }
+  
+    if (errorMessage !== "") {
+      document.getElementById("error").innerHTML = errorMessage;
+    } else {
+      document.getElementById("error").innerHTML = ""; 
+      alert("Form submitted successfully!"); 
+    }
+  }
+  
